@@ -102,13 +102,9 @@ public class Oauth2GenericAuthenticator extends AbstractApplicationAuthenticator
             }
             response.sendRedirect(authorizationRequest.getLocationUri());
         } catch (IOException e) {
-            String message = "Error while redirecting to the login page.";
-            logger.error(message, e);
-            throw new AuthenticationFailedException(message, e);
+            throw new AuthenticationFailedException("Error while redirecting to the login page.", e);
         } catch (OAuthSystemException | MisconfigurationException e) {
-            String message = "Error while building authorization request.";
-            logger.error(message, e);
-            throw new AuthenticationFailedException(message, e);
+            throw new AuthenticationFailedException("Error while building authorization request.", e);
         }
     }
 
@@ -138,9 +134,7 @@ public class Oauth2GenericAuthenticator extends AbstractApplicationAuthenticator
             }
             buildClaims(context, userInfo);
         } catch (ApplicationAuthenticatorException | MisconfigurationException e) {
-            String errorMessage = "Error while processing authentication response.";
-            logger.error(errorMessage, e);
-            throw new AuthenticationFailedException(errorMessage, e);
+            throw new AuthenticationFailedException("Error while processing authentication response.", e);
         }
     }
 

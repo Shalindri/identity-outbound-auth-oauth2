@@ -42,8 +42,9 @@ public class Oauth2GenericAuthenticatorServiceComponent {
         try {
             Oauth2GenericAuthenticator oauthAuthenticator = new Oauth2GenericAuthenticator();
             Hashtable<String, String> props = new Hashtable<>();
-            context.getBundleContext().registerService(ApplicationAuthenticator.class.getName(), oauthAuthenticator,
-                     props);
+            //Registaion of this authenticator needs to be configurable.
+//            context.getBundleContext().registerService(ApplicationAuthenticator.class.getName(), oauthAuthenticator,
+//                     props);
             if (logger.isDebugEnabled()) {
                 logger.debug("Oauth2 Authenticator bundle is activated");
             }
